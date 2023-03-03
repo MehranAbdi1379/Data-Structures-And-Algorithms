@@ -26,14 +26,14 @@ namespace Data_Structures_And_Algorithms
             StartTime = Process.GetCurrentProcess().Threads[0].UserProcessorTime;
         }
 
-        public void EndTimer()
+        public void StopTimer()
         {
             Duration = Process.GetCurrentProcess().Threads[0].UserProcessorTime.Subtract(StartTime);
         }
 
         public double Result()
         {
-            return Duration.TotalSeconds;
+            return Duration.TotalMilliseconds;
         }
     }
 }

@@ -9,20 +9,38 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        CArray nums = new CArray(10);
-        Random random = new Random();
+        int[] nums = new int[100];
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < nums.Length; i++)
         {
-            nums.Insert((int)(random.NextDouble() * 100)); 
+            nums[i] = i;
         }
+    }
 
-        Console.Write("Numbers before sorting: ");
-        nums.DisplayElements();
+    public static int BinarySearch(int[] nums ,int input)
+    {
+        int right = nums.Length-1;
+        int left = 0;
 
-        nums.BubbleSort();
-        Console.Write("Numbers after Bubble Sorting: ");
-        nums.DisplayElements();
+        while (left <= right)
+        {
+            int mid = (left+right)/2;
+
+            if (nums[mid] == input)
+            {
+                return mid;
+            }
+            else if (input < nums[mid])
+            {
+                right = mid - 1;
+            }
+            else if (input > nums[mid])
+            {
+                left = mid + 1;
+            }
+
+
+        }
     }
 }
 

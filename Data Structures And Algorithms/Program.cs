@@ -9,38 +9,27 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int[] nums = new int[100];
+        LinkedList<string> soldiers = new LinkedList<string>();
+        soldiers.AddLast("Mehran");
+        soldiers.AddLast("Milad");
+        soldiers.AddLast("Ali");
+        soldiers.AddLast("Taha");
+        soldiers.AddLast("Mohammad");
+        soldiers.AddLast("Reza");
+        soldiers.AddLast("Alex");
+        soldiers.AddLast("Mani");
+        soldiers.AddLast("Phill");
+        soldiers.AddLast("Luke");
 
-        for (int i = 0; i < nums.Length; i++)
+        string[] soldiersArray = new string[soldiers.Count];
+
+        LinkedListNode<string> soldier = soldiers.First;
+
+        for (int i = 0; i < soldiers.Count; i++)
         {
-            nums[i] = i;
+            soldiersArray[i] = soldier.Value;
+            soldier = soldier.Next;
         }
-    }
-
-    public static int BinarySearch(int[] nums ,int input)
-    {
-        int right = nums.Length-1;
-        int left = 0;
-
-        while (left <= right)
-        {
-            int mid = (left+right)/2;
-
-            if (nums[mid] == input)
-            {
-                return mid;
-            }
-            else if (input < nums[mid])
-            {
-                right = mid - 1;
-            }
-            else if (input > nums[mid])
-            {
-                left = mid + 1;
-            }
-
-
-        }
+        
     }
 }
-

@@ -87,4 +87,33 @@
             }
         }
     }
+
+    public void ShellSort()
+    {
+        int h = arr.Length / 2;
+        int i = 0;
+        int j = i + h;
+        int main, secondary;
+        while (h>0)
+        {
+            j = i + h;
+            for (i = 0; i < arr.Length - h; i++)
+            {
+                main = i;
+                secondary = j;
+                while (main > -1 && arr[main] > arr[secondary] )
+                {
+                    int temp = arr[main];
+                    arr[main] = arr[secondary];
+                    arr[secondary] = temp;
+
+                    secondary = main;
+                    main = main - h;
+                }
+                j++;
+            }
+            h = h / 2;
+            i = 0;
+        }
+    }
 }

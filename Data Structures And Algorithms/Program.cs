@@ -11,16 +11,90 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        CArray array = new CArray(100);
-        Random random = new Random();
+        CArray array = new CArray(100000);
+        Random random = new Random(20);
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 100000; i++)
         {
-            array.Insert(random.Next(0 ,10));
+            array.Insert(random.Next(0 ,1000));
         }
+        Timing timer = new Timing();
+
+        timer.StartTimer();
+
+        array.MergeSort();
+
+        timer.StopTimer();
+
+        Console.WriteLine("Merge Sort Timer Speed: "+timer.Result());
+
+        array = new CArray(100000);
+
+        for (int i = 0; i < 100000; i++)
+        {
+            array.Insert(random.Next(0, 1000));
+        }
+
+        timer = new Timing();
+
+        timer.StartTimer();
 
         array.ShellSort();
 
-        array.DisplayElements();
+        timer.StopTimer();
+
+        Console.WriteLine("Shell Sort Timer Speed: "+timer.Result());
+
+        array = new CArray(100000);
+
+        for (int i = 0; i < 100000; i++)
+        {
+            array.Insert(random.Next(0, 1000));
+        }
+
+        timer = new Timing();
+
+        timer.StartTimer();
+
+        array.InsertionSort();
+
+        timer.StopTimer();
+
+        Console.WriteLine("Insertion Sort Timer Speed: " + timer.Result());
+
+        array = new CArray(100000);
+
+        for (int i = 0; i < 100000; i++)
+        {
+            array.Insert(random.Next(0, 1000));
+        }
+
+        timer = new Timing();
+
+        timer.StartTimer();
+
+        array.SelectionSort();
+
+        timer.StopTimer();
+
+        Console.WriteLine("Selection Sort Timer Speed: " + timer.Result());
+
+        array = new CArray(1000000);
+
+        for (int i = 0; i < 1000000; i++)
+        {
+            array.Insert(random.Next(0, 1000));
+        }
+
+        timer = new Timing();
+
+        timer.StartTimer();
+
+        array.BubbleSort();
+
+        timer.StopTimer();
+
+        Console.WriteLine("Bubble Sort Timer Speed: " + timer.Result());
+
     }
 }

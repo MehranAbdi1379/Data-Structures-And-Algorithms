@@ -54,9 +54,10 @@
 
     public void SelectionSort()
     {
+        int iMin = 0 , temp = 0;
         for (int i = 0; i < arr.Length -1; i++)
         {
-            int iMin = i;
+            iMin = i;
             for (int j = i+1 ; j < arr.Length; j++)
             {
                 if (arr[iMin] > arr[j])
@@ -66,7 +67,7 @@
             }
             if (iMin != i)
             {
-                int temp = arr[i];
+                temp = arr[i];
                 arr[i] = arr[iMin];
                 arr[iMin] = temp;
             }
@@ -75,12 +76,13 @@
 
     public void InsertionSort()
     {
+        int j = 0 , temp = 0;
         for (int i = 1; i < arr.Length; i++)
         {
-            int j = i;
+            j = i;
             while(j > 0 && arr[j-1] > arr[j])
             {
-                int temp = arr[j];
+                temp = arr[j];
                 arr[j] = arr[j - 1];
                 arr[j - 1] = temp;
                 j--;
@@ -114,6 +116,63 @@
             }
             h = h / 2;
             i = 0;
+        }
+    }
+
+    public void MergeSort()
+    {
+        int[] tempArray = new int[arr.Length];
+        recMergeSort(tempArray, 0, arr.Length - 1);
+    }
+
+    public void recMergeSort(int[] tempArray, int left, int right)
+    {
+        if (left == right)
+        {
+            return;
+        }
+        else
+        {
+            int mid = (left + right) / 2;
+            recMergeSort(tempArray, left, mid);
+            recMergeSort(tempArray, mid+1 , right);
+            Merge(tempArray, left, mid, right);
+        }
+    }
+
+    public void Merge(int[] tempArray , int left, int mid , int right)
+    {
+        int i = left, j = mid+1 , counter = i;
+        while (i<=mid && j<= right)
+        {
+            if (arr[i] <= arr[j])
+            {
+                tempArray[counter] = arr[i];
+                i++;
+                counter++;
+            }
+            else
+            {
+                tempArray[counter] = arr[j];
+                counter++;
+                j++;
+            }
+        }
+        while (i<=mid)
+        {
+            tempArray[counter] = arr[i];
+            counter++;
+            i++;
+        }
+        while (j<=right)
+        {
+            tempArray[counter] = arr[j];
+            counter++;
+            j++;
+        }
+        for (int k = 0; k < (right-left+1); k++)
+        {
+            arr[k+left] = tempArray[k+left];
         }
     }
 }

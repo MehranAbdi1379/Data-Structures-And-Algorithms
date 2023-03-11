@@ -175,4 +175,93 @@
             arr[k+left] = tempArray[k+left];
         }
     }
+
+    public int[] Heapify(int[] array)
+    {
+        int p = (array.Length-1) / 2;
+        int bigChild = 0 , temp = 0;
+
+        while ((p*2+1) <= array.Length-1 && p>-1)
+        {
+            if ((p*2+2) <= array.Length-1)
+            {
+                if (array[(p*2+1)] >= array[(p*2+2)])
+                {
+                    bigChild = p * 2 + 1;
+                }
+                else
+                {
+                    bigChild = p * 2 + 2;
+                }
+
+                if (array[bigChild] > array[p])
+                {
+                    temp = array[bigChild];
+                    array[bigChild] = array[p];
+                    array[p] = temp;
+
+                    if ((bigChild * 2+1) <= array.Length - 1)
+                    {
+                        p = bigChild;
+                    }
+                    else
+                    {
+                        p--;
+                    }
+                }
+                else
+                {
+                    p--;
+                }
+            }
+            else
+            {
+                bigChild = p * 2 + 1;
+
+                if (array[bigChild] > array[p])
+                {
+                    temp = array[bigChild];
+                    array[bigChild] = array[p];
+                    array[p] = temp;
+
+                    if ((bigChild * 2+1) <= array.Length - 1)
+                    {
+                        p = bigChild;
+                    }
+                    else
+                    {
+                        p--;
+                    }
+                }
+                else
+                {
+                    p--;
+                }
+                
+            }
+            
+        }
+
+        return array;
+    }
+
+    public void HeapSort()
+    {
+        int[] array = Heapify(arr);
+        int[] sorted = new int[array.Length];
+        int[] tempArray;
+
+        for (int i = sorted.Length -1; i >= 0 ; i--)
+        {
+            sorted[i] = array[0];
+            tempArray = new int[i];
+            for (int j = 0; j < tempArray.Length; j++)
+            {
+                tempArray[j] = array[j + 1];
+            }
+            array = Heapify(tempArray);
+        }
+
+        arr = sorted;
+    }
 }

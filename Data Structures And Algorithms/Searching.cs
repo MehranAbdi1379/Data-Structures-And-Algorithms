@@ -1,4 +1,7 @@
-﻿public static class Searching
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Xml;
+
+public static class Searching
 {
     public static int BinarySearching(this int[] nums, int input)
     {
@@ -29,4 +32,3 @@
         return -1;
     }
 }
-

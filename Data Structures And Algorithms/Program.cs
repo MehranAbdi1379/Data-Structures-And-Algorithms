@@ -11,17 +11,14 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        CArray array = new CArray(6);
-        array.Insert(8);
-        array.Insert(15);
-        array.Insert(7);
-        array.Insert(2);
-        array.Insert(17);
-        array.Insert(25);
-        //array.Insert(32);
-        //array.Insert(9);
-        //array.Insert(7);
-        //array.Insert(18);
+        CArray array = new CArray(100);
+        
+        Random random = new Random();
+
+        for (int i = 0; i < 100; i++)
+        {
+            array.Insert(random.Next(1, 1000));
+        }
 
         array.HeapSort();
 

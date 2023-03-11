@@ -178,7 +178,7 @@
 
     public int[] Heapify(int[] array)
     {
-        int p = (array.Length-1) / 2;
+        int p = (array.Length-2) / 2;
         int bigChild = 0 , temp = 0;
 
         while ((p*2+1) <= array.Length-1 && p>-1)

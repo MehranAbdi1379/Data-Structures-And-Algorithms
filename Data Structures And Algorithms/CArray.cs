@@ -264,4 +264,58 @@
 
         arr = sorted;
     }
+
+    public void QuickSort()
+    {
+        Partition(0, arr.Length - 1);
+    }
+
+    public void Partition(int left, int right)
+    {
+        int start = left , end = right;
+        int temp = 0;
+        bool startChanged = false, endChanged = false;
+
+        if (left != right)
+        {
+            while (start <= end)
+            {
+                startChanged = false;
+                endChanged = false;
+
+                while (arr[start] <= arr[left] && start<right)
+                {
+                    start++;
+                    startChanged = true;
+                }
+                while (arr[end] > arr[left] && end >left)
+                {
+                    end--;
+                    endChanged = true;
+                }
+                if (startChanged ==false && endChanged == false)
+                    break;
+                if (start < end)
+                {
+                    temp = arr[start];
+                    arr[start] = arr[end];
+                    arr[end] = temp;
+                }
+            }
+
+            temp = arr[end];
+            arr[end] = arr[left];
+            arr[left] = temp;
+
+            if (left<end)
+            {
+                Partition(left, end - 1);
+            }
+            
+            if (right>end)
+            {
+                Partition(end + 1, right);
+            }
+        }
+    }
 }

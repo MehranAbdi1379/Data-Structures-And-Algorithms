@@ -12,7 +12,7 @@ internal class Program
     private static void Main(string[] args)
     {
         CArray array = new CArray(100);
-        
+
         Random random = new Random();
 
         for (int i = 0; i < 100; i++)
@@ -20,7 +20,7 @@ internal class Program
             array.Insert(random.Next(1, 1000));
         }
 
-        array.HeapSort();
+        array.QuickSort();
 
         array.DisplayElements();
     }
